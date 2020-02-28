@@ -8,6 +8,7 @@
     "knex": "^0.20.10",
     "nodemon": "^2.0.2",
     "pg": "^7.18.2",
+    "server": "^1.0.27",
     "sqlite3": "^4.1.1"
   },
   "name": "back-end",
@@ -15,7 +16,9 @@
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "server": "nodemon index.js"
   },
   "repository": {
     "type": "git",
