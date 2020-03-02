@@ -3,7 +3,7 @@ exports.up = function (knex, Promise) {
     tbl.increments();
     tbl.text("username", 128).notNullable().unqiue();
     tbl.text("password", 500).notNullable();
-    tbl.text("type", 20).notNullable();
+    tbl.integer("type", 20).notNullable();
   })
 };
 
