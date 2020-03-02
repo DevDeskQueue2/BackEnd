@@ -15,7 +15,7 @@ const authRoute = require('./routes/authorization/authorization');
 
 server.use('/api/auth/', authRoute);
 
-server.get('/api/', (req, res) => {
+server.get('/', (req, res) => {
   res.status(200).json({ message: "Welcome to my api." });
 })
 

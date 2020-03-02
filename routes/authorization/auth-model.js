@@ -1,9 +1,9 @@
 const db = require("../../data/db");
 
 // returns list of all users
-function find() {
-  return db("users").select("id", "username");
-}
+// function find() {
+//   return db("users").select("id", "username");
+// }
 
 // select user by filter
 function findBy(username) {
@@ -21,7 +21,6 @@ function add(user) {
 }
 
 module.exports = {
-  find,
   findBy,
   add
 }

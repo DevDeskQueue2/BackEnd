@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
           //Below will give the UserID, then username/type, token
           id: id,
           username: username,
-          userType: user.userType,
+          userType: user.type,
           token
         });
       } else {
