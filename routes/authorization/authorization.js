@@ -14,17 +14,26 @@ const db = require('./auth-model');
 // })
 
 // host/api/auth/register
-router.post('/register', async (req, res) => {
-  try {
-    let user = req.body;
-    user.password = bcrypt.hashSync(user.password, 2);
-    const newUser = await db.add(user);
-    res.status(201).json({ newUser });
-  } catch (error) {
+router.post('/register', (req, res) => {
+  let user = req.body;
 
-    res.status(500).json({ error });
-  }
-})
+  const hash = bcrypt.hashSync(user.password, 8);
+  user.password = hash;
+
+  Users.add(user)
+    .then(savedUser => {
+      // generate the token for the user
+      const token = genToken(savedUser);
+
+
+      res.status(201).json({ created_user: savedUser, token: token });
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: 'Error adding the user to the database', error: err
+      });
+    });
+});
 
 // host/api/auth/login
 //return userID and Token and UserType
@@ -51,19 +60,19 @@ router.post('/login', async (req, res) => {
     });
 });
 
-// host/api/auth/
-router.delete('/:id', async (req, res) => {
-  try {
-    const id = req.params.id;
-    const deleted = await db.removeUser(id);
-    if (deleted.length > 0) {
-      res.status(204);
-    } else {
-      res.status(401).json({ message: "User not found." });
-    }
-  } catch (error) {
-    res.status(500).json({ error });
-  }
-})
+// // host/api/auth/
+// router.delete('/:id', async (req, res) => {
+//   try {
+//     const id = req.params.id;
+//     const deleted = await db.removeUser(id);
+//     if (deleted.length > 0) {
+//       res.status(204);
+//     } else {
+//       res.status(401).json({ message: "User not found." });
+//     }
+//   } catch (error) {
+//     res.status(500).json({ error });
+//   }
+// })
 
 module.exports = router;
