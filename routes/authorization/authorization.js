@@ -22,10 +22,6 @@ router.post('/register', (req, res) => {
 
   Users.add(user)
     .then(savedUser => {
-      // generate the token for the user
-      const token = genToken(savedUser);
-
-
       res.status(201).json({ created_user: savedUser, token: token });
     })
     .catch(err => {
@@ -48,7 +44,7 @@ router.post('/login', async (req, res) => {
           //Below will give the UserID, then username/type, token
           id: id,
           username: username,
-          userType: user.type,
+          userType: type,
           token
         });
       } else {
