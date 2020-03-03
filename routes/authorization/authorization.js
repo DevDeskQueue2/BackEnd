@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken'); // installed this library
 const secrets = require('./config/secrets.js');
 
 // // host/api/auth/
-// router.get('/', async (req, res) => {
+// //router.get('/', async (req, res) => {
 //   try {
 //     const users = await db.find();
 //     res.status(200).json({ users });
@@ -30,7 +30,7 @@ router.post('/register', (req, res) => {
       // generate the token for the user
       // const token = genToken(savedUser);
 
-      res.status(201).json({id: id[0], ...user});
+      res.status(201).json({ id: id[0], ...user });
     })
     .catch(err => {
       res.status(500).json({
@@ -42,7 +42,7 @@ router.post('/register', (req, res) => {
 // host/api/auth/login
 //return userID and Token and UserType
 router.post('/login', (req, res) => {
-  const {username, password } = req.body;
+  const { username, password } = req.body;
 
   console.log(username);
 
@@ -56,7 +56,7 @@ router.post('/login', (req, res) => {
           //Below will give the UserID, then username/type, token
           id: user.id,
           username: username,
-          userType: user.type,
+          userType: type,
           token
         });
       } else {
