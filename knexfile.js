@@ -3,25 +3,13 @@ require('dotenv').config();
 module.exports = {
 
   development: {
-    client: 'pg',
-    connection: process.env.DB_URL,
-    migrations: {
-      directory: './data/migrations'
-    }
-  },
-
-  staging: {
-    client: 'postgresql',
+    client: 'sqlite3',
+    useNullAsDefault: true,
     connection: {
-      database: 'my_db',
-      user: 'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
+      filename: './data/devdesk.db3',
     },
     migrations: {
+<<<<<<< HEAD
       tableName: 'knex_migrations'
     }
   },
@@ -33,9 +21,12 @@ module.exports = {
     pool: {
       min: 2,
       max: 10
+=======
+      directory: './data/migrations'
+>>>>>>> 790944d9abd18705cb64e07ba36d568c72d5636e
     },
-    migrations: {
-      tableName: 'knex_migrations'
+    seeds: {
+      directory: './data/seeds'
     }
   }
 

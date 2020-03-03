@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 
 server.use(helmet());
-server.use(cors());
+// server.use(cors());
 server.use(express.json());
 
 
