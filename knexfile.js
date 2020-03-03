@@ -9,7 +9,6 @@ module.exports = {
       filename: './data/devdesk.db3',
     },
     migrations: {
-<<<<<<< HEAD
       tableName: 'knex_migrations'
     }
   },
@@ -21,9 +20,6 @@ module.exports = {
     pool: {
       min: 2,
       max: 10
-=======
-      directory: './data/migrations'
->>>>>>> 790944d9abd18705cb64e07ba36d568c72d5636e
     },
     seeds: {
       directory: './data/seeds'
